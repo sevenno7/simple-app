@@ -11,11 +11,12 @@ import { Switch, Route } from 'react-router'
 
 import { ConnectedRouter } from 'react-router-redux';
 
+import 'antd/dist/antd.css';
+
 import createRoutes from './routes';
 import configureStore from './store';
 
-import Layout from './Views/Layout';
-import NotFound from './Views/NotFound';
+import { LayoutContainer, NotFoundContainer } from './Views/_Shared';
 
 import { PAGE_NOT_FOUND } from './constants';
 
@@ -28,13 +29,13 @@ ReactDOM.render(
   <Provider store={store}>
     <ConnectedRouter history={history} children={
       <Switch>
-        <Route path={PAGE_NOT_FOUND} component={NotFound} />
+        <Route path={PAGE_NOT_FOUND} component={NotFoundContainer} />
         <Route path="/" render={() => (
-          <Layout>
+          <LayoutContainer>
             <Switch>
               {routes.map((route, i) => (route.shouldRedirectTo ? <Redirect to={route.shouldRedirectTo} key={i} /> : <Route key={i} {...route} />))}
             </Switch>
-          </Layout>)
+          </LayoutContainer>)
         } />
       </Switch>
     } />

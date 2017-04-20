@@ -3,6 +3,13 @@
     "react-app"
   ],
   "plugins": [
-    "syntax-dynamic-import"
+    "syntax-dynamic-import",
+    [
+      "import",
+      {
+        "libraryName": "antd",
+        "style": "css"
+      }
+    ] // `style: true` for less
   ]
 }
